@@ -23,6 +23,19 @@ export function sumToN(n) {
  */
 export function factorial(n) {
   // TODO
+  if(typeof n !== `number`) {
+    return NaN;
+  } else if(n < 0) {
+    return undefined;
+  } else if(n === 0){
+    return 1;
+  } else if(n > 0) {
+    let factor = 1;
+    for(let i = 1; i <=n; i++) {
+      factor = factor * i;
+    }
+    return factor;
+  }
 }
 
 /**
@@ -33,6 +46,17 @@ export function factorial(n) {
  */
 export function buildNArray(n) {
   // TODO
+  let newArray = [];
+  if(typeof n !== `number`) {
+    return null;
+  } else if(n <= 0) {
+    return newArray;
+  } else if(n > 0) {
+    let fullArray = []
+    for(let i = 1; i <= n; i++) {
+      fullArray.push(i);
+    } return fullArray;
+  } 
 }
 
 /**
@@ -41,6 +65,23 @@ export function buildNArray(n) {
  */
 export function getLongestString(strings) {
   // TODO
+  if(strings.length === 0) {
+    return '';
+  } else {
+    let count = 0;
+    for (let i = 0; i < strings.length; i++) {
+      let stringLength = strings[i].length;
+      if (stringLength > count) {
+        count = stringLength;
+      }
+    }
+    const singleString = strings.find((string) => {
+      if(string.length === count) {
+        return string;
+      }
+    })
+    return singleString;
+  }
 }
 
 /**
@@ -49,7 +90,22 @@ export function getLongestString(strings) {
  */
 export function countPresent(attendance) {
   // TODO
-}
+  if(attendance.length === 0) {
+    return 0;
+  }
+  let counter = 0;
+  for(let i = 0; i < attendance.length; i++){
+    let currentElement = attendance[i];
+    if(currentElement === true) {
+      counter = counter + 1;
+    } else{
+      counter = counter + 0;
+    }
+  } return counter;
+} 
+  
+
+
 
 /**
  * In DNA strings, the symbols `A` and `T` are complements of each other,
@@ -63,4 +119,23 @@ export function countPresent(attendance) {
  */
 export function complementDNA(dna) {
   // TODO
+  if(typeof dna !== `string`){
+    return null;
+  }
+  let newArray = dna.split(``);
+  if(newArray.length === 0) {
+    return ``;
+  } 
+  for (let i = 0; i < newArray.length; i++){
+    if(newArray[i] === `A`){
+      newArray[i] = `T`
+    } else if (newArray[i] === `C`) {
+      newArray[i] = `G`;
+    } else if (newArray[i] === `G`) {
+      newArray[i] = `C`;
+    } else if (newArray[i] === 'T') {
+      newArray[i] = `A`;
+    } 
+  } return newArray.join(``);
 }
+
